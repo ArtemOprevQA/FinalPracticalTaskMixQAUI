@@ -10,11 +10,20 @@ public class LibertexTerminalTest extends BaseTest{
 
     LibertexTerminalProfilePage libertexTerminalProfilePage = new LibertexTerminalProfilePage();
 
+    LibertexTerminalLitecoinTradePage libertexTerminalLitecoinTradePage = new LibertexTerminalLitecoinTradePage();
+
     @Test(description = "Test Libertex Terminal")
-    public void testLibertexTerminal(){
+    public void testLibertexTerminal() throws InterruptedException {
+
         libertexTerminalMainPage.click();
+
         libertexTerminalLoginPage.inputCredentials("testusermixqa@gmail.com", "123456");
         libertexTerminalLoginPage.click();
-        libertexTerminalProfilePage.click();
+
+        libertexTerminalProfilePage.chooseInstrument();
+        libertexTerminalProfilePage.openTrade();
+
+        libertexTerminalLitecoinTradePage.openTrade();
+
     }
 }
