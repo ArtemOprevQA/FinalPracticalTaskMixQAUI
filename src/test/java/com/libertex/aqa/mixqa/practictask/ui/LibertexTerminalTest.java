@@ -1,5 +1,6 @@
 package com.libertex.aqa.mixqa.practictask.ui;
 
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 
 public class LibertexTerminalTest extends BaseTest{
@@ -25,5 +26,6 @@ public class LibertexTerminalTest extends BaseTest{
 
         libertexTerminalLitecoinTradePage.openTrade();
 
+        libertexTerminalLitecoinTradePage.notificationField.shouldHave(Condition.text("Successful trade! Your balance will be updated shortly."));
     }
 }
