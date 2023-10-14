@@ -16,9 +16,13 @@ public class LibertexTerminalTest extends BaseTest{
     @Test(description = "Test Libertex Terminal")
     public void testLibertexTerminal() throws InterruptedException {
 
+        String email = "testusermixqa@gmail.com";
+
+        String password = "123456";
+
         libertexTerminalMainPage.click();
 
-        libertexTerminalLoginPage.inputCredentials("testusermixqa@gmail.com", "123456");
+        libertexTerminalLoginPage.inputCredentials(email, password);
         libertexTerminalLoginPage.click();
 
         libertexTerminalProfilePage.chooseInstrument();
