@@ -4,19 +4,20 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+
+import java.io.IOException;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class BaseTest {
 
-    @BeforeClass
-    public void setUp() {
+    @BeforeSuite
+    public void setupBrowser() throws IOException {
 
-        Configuration.timeout = 60000;
+        Configuration.browser = System.getProperty("browser");
 
-        Configuration.headless = false;
     }
 
     @BeforeTest
