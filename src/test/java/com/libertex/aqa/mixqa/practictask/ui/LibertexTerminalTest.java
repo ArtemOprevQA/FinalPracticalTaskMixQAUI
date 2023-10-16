@@ -1,17 +1,15 @@
 package com.libertex.aqa.mixqa.practictask.ui;
 
+import Pages.LibertexTerminalInstrumentTradePage;
+import Pages.LibertexTerminalProfilePage;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 
 public class LibertexTerminalTest extends BaseTest{
 
-    LibertexTerminalMainPage libertexTerminalMainPage = new LibertexTerminalMainPage();
+    private LibertexTerminalProfilePage libertexTerminalProfilePage = new LibertexTerminalProfilePage();
 
-    LibertexTerminalLoginPage libertexTerminalLoginPage = new LibertexTerminalLoginPage();
-
-    LibertexTerminalProfilePage libertexTerminalProfilePage = new LibertexTerminalProfilePage();
-
-    LibertexTerminalLitecoinTradePage libertexTerminalLitecoinTradePage = new LibertexTerminalLitecoinTradePage();
+    private LibertexTerminalInstrumentTradePage libertexTerminalInstrumentTradePage = new LibertexTerminalInstrumentTradePage();
 
     @Test(description = "Test Libertex Terminal")
     public void testLibertexTerminal() throws InterruptedException {
@@ -20,16 +18,15 @@ public class LibertexTerminalTest extends BaseTest{
 
         String password = "123456";
 
-        libertexTerminalMainPage.click();
+        libertexTerminalMainPage.clickLoginButton();
 
         libertexTerminalLoginPage.inputCredentials(email, password);
-        libertexTerminalLoginPage.click();
+        libertexTerminalLoginPage.clickLoginButton();
 
-        libertexTerminalProfilePage.chooseInstrument();
-        libertexTerminalProfilePage.openTrade();
+        libertexTerminalProfilePage.clickOnBuyTabForDefaultInstrument();
 
-        libertexTerminalLitecoinTradePage.openTrade();
-
-        libertexTerminalLitecoinTradePage.notificationField.shouldHave(Condition.text("Successful trade! Your balance will be updated shortly."));
+        libertexTerminalInstrumentTradePage.openDefaultInstrumentTrade();
+        libertexTerminalInstrumentTradePage.waitingForNotification();
+        libertexTerminalInstrumentTradePage.getNotificationField().shouldHave(Condition.text("Successful trade! Your balance will be updated shortly."));
     }
 }

@@ -1,5 +1,7 @@
 package com.libertex.aqa.mixqa.practictask.ui;
 
+import Pages.LibertexTerminalLoginPage;
+import Pages.LibertexTerminalMainPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -12,6 +14,10 @@ import java.io.IOException;
 import static com.codeborne.selenide.Selenide.$;
 
 public class BaseTest {
+
+    protected LibertexTerminalMainPage libertexTerminalMainPage = new LibertexTerminalMainPage();
+
+    protected LibertexTerminalLoginPage libertexTerminalLoginPage = new LibertexTerminalLoginPage();
 
     @BeforeSuite
     public void setupBrowser() throws IOException {

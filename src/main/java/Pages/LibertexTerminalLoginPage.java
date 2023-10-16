@@ -1,4 +1,4 @@
-package com.libertex.aqa.mixqa.practictask.ui;
+package Pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -14,14 +14,14 @@ public class LibertexTerminalLoginPage {
 
     private SelenideElement loginButton = $(By.cssSelector("input[type='submit'][value='Log in']"));
 
-    @Step("Set email: '{query1}' and password: '{query2}' to its fields")
-    public void inputCredentials(String query1, String query2) {
-        emailField.setValue(query1);
-        passwordField.setValue(query2);
+    @Step("Set email: '{email}' and password: '{password}' to its fields")
+    public void inputCredentials(String email, String password) {
+        emailField.setValue(email);
+        passwordField.setValue(password);
     }
 
     @Step("Click on the 'Login' button on login page")
-    public void click() {
+    public void clickLoginButton() {
         loginButton.click();
     }
 }
